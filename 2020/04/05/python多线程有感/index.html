@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>python多线程有感 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、线程的介绍什么是线程线程(Thread)是操作系统能够进行运算和调度的最小单位，他被包含在进程中，是进程的实际运作单位，也就是在cpu上运行的实体店。线程自己不拥有系统资源，只拥有一些运行时的必须资源（如：栈、寄存器、程序计数器等），但是它可以与同一进程下的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，在同一进程中的线程可以并发执行。 线程的优点每个进程在的执行中都有独立">
+  <meta name="description" content="一、线程的介绍什么是线程线程(Thread)是操作系统能够进行运算和调度的最小单位，他被包含在进程中，是进程的实际运作单位，也就是在cpu上运行的实体店。线程自己不拥有系统资源，只拥有一些运行时的必须资源（如：栈、寄存器、程序计数器等），但是它可以与同一进程下的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，在同一进程中的线程可以并发执行。 线程的优点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python多线程有感">
 <meta property="og:url" content="http://yoursite.com/2020/04/05/python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%9C%89%E6%84%9F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、线程的介绍什么是线程线程(Thread)是操作系统能够进行运算和调度的最小单位，他被包含在进程中，是进程的实际运作单位，也就是在cpu上运行的实体店。线程自己不拥有系统资源，只拥有一些运行时的必须资源（如：栈、寄存器、程序计数器等），但是它可以与同一进程下的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，在同一进程中的线程可以并发执行。 线程的优点每个进程在的执行中都有独立">
+<meta property="og:description" content="一、线程的介绍什么是线程线程(Thread)是操作系统能够进行运算和调度的最小单位，他被包含在进程中，是进程的实际运作单位，也就是在cpu上运行的实体店。线程自己不拥有系统资源，只拥有一些运行时的必须资源（如：栈、寄存器、程序计数器等），但是它可以与同一进程下的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，在同一进程中的线程可以并发执行。 线程的优点">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-05T05:30:02.000Z">
-<meta property="article:modified_time" content="2020-04-05T09:59:46.750Z">
+<meta property="article:modified_time" content="2020-04-05T10:17:40.501Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -176,7 +176,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、线程的介绍"><a href="#一、线程的介绍" class="headerlink" title="一、线程的介绍"></a>一、线程的介绍</h2><h3 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h3><p>线程(Thread)是操作系统能够进行运算和调度的最小单位，他被包含在进程中，是进程的实际运作单位，也就是在cpu上运行的实体店。线程自己不拥有系统资源，只拥有一些运行时的必须资源（如：栈、寄存器、程序计数器等），但是它可以与同一进程下的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，在同一进程中的线程可以并发执行。</p>
-<h3 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h3><p>每个进程在的执行中都有独立的内存单元，而进程中的线程共享内存，可以极大提高程序的运行效率<br>每个线程都会共享进程的虚拟内存空间。线程的共享环境包括进程代码段、进程的公有数据等，所以线程之间很容易实现通信<br>进程在创建时，操作系统会为之分配独立的虚拟内存空间，并分配进程号等大量相关资源，而创建线程相对简单得多。这样使得多线程并发比使用多进程并发的性能要高得多</p>
+<h3 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h3><a id="more"></a>
+<p>每个进程在的执行中都有独立的内存单元，而进程中的线程共享内存，可以极大提高程序的运行效率<br>每个线程都会共享进程的虚拟内存空间。线程的共享环境包括进程代码段、进程的公有数据等，所以线程之间很容易实现通信<br>进程在创建时，操作系统会为之分配独立的虚拟内存空间，并分配进程号等大量相关资源，而创建线程相对简单得多。这样使得多线程并发比使用多进程并发的性能要高得多</p>
 <h3 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h3><p><strong>在用户空间中</strong><br>用户级线程不需要内核支持，可由用户进程自己创建、调度和管理，不会涉及用户态和内核态的切换，所以操作系统内核不知道多线程的存在。操作系统在进行进程调度时，时间片的分配以进程为单位，因此当进程中的线程阻塞，整个进程（包括进程内的所有线程）都会阻塞<br><strong>在内核空间中</strong><br>内核级线程由操作系统内核创建和撤销。内核维护进程及线程的上下文信息以及线程切换。一个内核线程由于I/O操作而阻塞，不会影响其它线程的运行。</p>
 <h3 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h3><p>由于进程间的线程使用共享内存，所以通信十分简单迅速。但是当两个或者多个线程读写某些共享数据时，由于最后的结果取决于线程运行的精准时序，会出现竞争。为避免竞争条件，需要组织线程读取共享内存的规则，使线程同步。<br><strong>线程同步常用方法：</strong></p>
 <ul>
